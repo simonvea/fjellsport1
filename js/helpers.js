@@ -12,3 +12,12 @@ export function getItemsQuantity(items) {
 export function toCurrencyString(price) {
   return `${price} kr`;
 }
+
+export function debounce(work, wait) {
+  let timeout;
+
+  return (args) => {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => work(args), wait);
+  };
+}
