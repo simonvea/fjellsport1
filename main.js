@@ -16,22 +16,24 @@ const filterAutocompleteElement = document.getElementById('history');
 
 const orders = [];
 
-populateHistory(filterAutocompleteElement);
+(async function init() {
+  populateHistory(filterAutocompleteElement);
 
-try {
-  renderLoading(app, 'Henter ordre...');
+  try {
+    renderLoading(app, 'Henter ordre...');
 
-  const orderHistory = await getOrderHistory();
+    const orderHistory = await getOrderHistory();
 
-  orders.push(...orderHistory.orders);
+    orders.push(...orderHistory.orders);
 
-  renderOrders(app, orders);
-} catch (err) {
-  console.error(err);
-  renderFetchError(app);
-}
+    renderOrders(app, orders);
+  } catch (err) {
+    console.error(err);
+    renderFetchError(app);
+  }
+})();
 
-export const handleFilterChange = debounce((e) => {
+const handleFilterChange = debounce((e) => {
   const filter = e.target.value;
 
   reRenderOrdersWithFilter(orders, filter);
