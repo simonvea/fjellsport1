@@ -52,7 +52,19 @@ function renderOrders(element, orders) {
 const reRenderOrdersWithFilter = debounce((e) => {
   const filteredOrders = filterOrders(e.target.value, orders);
 
-  renderOrders(app, filteredOrders);
+  if (filteredOrders.length < 1) {
+    renderNotFound(app);
+  } else {
+    renderOrders(app, filteredOrders);
+  }
 }, 500);
+
+function renderNotFound(element) {
+  element.innerHTML = `
+    <p>
+      Beklager men vi kunne ikke finne noe som matchet ditt søk.
+    </p>
+  `;
+}
 
 filter.addEventListener('input', reRenderOrdersWithFilter);
