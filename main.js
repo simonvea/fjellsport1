@@ -1,7 +1,7 @@
 import 'normalize.css';
 import './style.css';
-import { orders } from './orderExamples.json';
-import { ordersToHtml } from './htmlFunctions';
+import { orders } from '/data/orderExamples.json';
+import { ordersToHtml } from './js/htmlFunctions';
 
 const app = document.getElementById('app');
 
