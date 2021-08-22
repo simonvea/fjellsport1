@@ -1,8 +1,8 @@
 import { getItemsQuantity, getPriceTotal, toCurrencyString } from './helpers';
 import {
-  getOrderStatus,
-  getPaymentStatus,
-  getShipmentStatus,
+  translateOrderStatus,
+  translatePaymentState,
+  translateShipmentState,
 } from './translations';
 
 export function ordersToHtml(orders) {
@@ -11,7 +11,7 @@ export function ordersToHtml(orders) {
 
 function orderToHtml(order) {
   const dateString = new Date(order.orderDate).toLocaleDateString();
-  const orderStatus = getOrderStatus(order);
+  const orderStatus = translateOrderStatus(order.orderStatus);
   const priceTotal = getPriceTotal(order.lineItems);
   const priceTotalString = toCurrencyString(priceTotal);
 
@@ -69,8 +69,8 @@ function itemToHtml(item) {
 }
 
 function orderDetailsToHtml(order) {
-  const paymentStatus = getPaymentStatus(order);
-  const shipmentStatus = getShipmentStatus(order);
+  const paymentStatus = translatePaymentState(order.paymentState);
+  const shipmentStatus = translateShipmentState(order.shipmentState);
   const itemsQuantity = getItemsQuantity(order.lineItems);
 
   return `

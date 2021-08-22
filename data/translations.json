@@ -1,0 +1,14 @@
+{
+  "orderStatus": {
+    "Open": "Åpen",
+    "Closed": "Ferdig"
+  },
+  "paymentState": {
+    "Paid": "Betalt",
+    "Pending": "Venter"
+  },
+  "shipmentState": {
+    "Shipped": "Sendt",
+    "Pending": "Venter"
+  }
+}

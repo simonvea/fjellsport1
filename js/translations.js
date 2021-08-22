@@ -1,23 +1,16 @@
-export function getOrderStatus(order) {
-  const translations = {
-    Open: 'Åpen',
-    Closed: 'Ferdig',
-  };
+import translations from '../data/translations.json';
 
-  return translations[order.orderStatus];
+export function translateOrderStatus(status) {
+  return translations.orderStatus[status];
 }
 
-export function getPaymentStatus(order) {
-  return order.paymentState === 'Paid' ? 'Betalt' : 'Venter';
+export function translatePaymentState(state) {
+  // Fallback to pending if no known translation of state
+  return (
+    translations.paymentState[state] || translations.paymentState['Pending']
+  );
 }
 
-export function getShipmentStatus(order) {
-  switch (order.shipmentState) {
-    case 'Shipped':
-      return 'Sendt';
-    case 'Pending':
-      return 'Venter';
-    default:
-      return 'Venter';
-  }
+export function translateShipmentState(state) {
+  return translations.shipmentState[state];
 }
