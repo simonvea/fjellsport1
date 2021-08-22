@@ -17,17 +17,10 @@ try {
 
   orders.push(...orderHistory.orders);
 
-  renderOrders(orders);
+  renderOrders(app, orders);
 } catch (err) {
   console.error(err);
-  app.innerHTML = `
-    <p>
-      Klarte ikke hente ordre.{' '}
-      <button onClick="window.location.reload(false)">
-        Vennligst prøv igjen.
-      </button>
-    </p>
-  )`;
+  renderFetchError(app);
 }
 
 function renderLoading(element, message) {
@@ -39,16 +32,27 @@ function renderLoading(element, message) {
   `;
 }
 
-function renderOrders(orders) {
+function renderFetchError(element) {
+  element.innerHTML = `
+    <p>
+      Klarte ikke hente ordre.
+      <button onClick="window.location.reload(false)">
+        Vennligst prøv igjen.
+      </button>
+    </p>
+  )`;
+}
+
+function renderOrders(element, orders) {
   const html = ordersToHtml(orders);
 
-  app.innerHTML = html;
+  element.innerHTML = html;
 }
 
 const reRenderOrdersWithFilter = debounce((e) => {
   const filteredOrders = filterOrders(e.target.value, orders);
 
-  renderOrders(filteredOrders);
+  renderOrders(app, filteredOrders);
 }, 500);
 
 filter.addEventListener('input', reRenderOrdersWithFilter);
