@@ -1,12 +1,3 @@
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-
 :root {
   --orange: #ed8026;
   --white: #ffffff;
@@ -52,6 +43,7 @@ html {
   box-shadow: 2px 2px 4px;
   padding: 1rem;
   max-width: 720px;
+  margin: 1rem 0;
 }
 
 .order__info {
@@ -70,8 +62,18 @@ html {
   text-align: right;
 }
 
-.order__details {
+.order__status--closed {
+  color: var(--green);
+}
+
+.items__details {
   margin: 0.5rem 0 1rem;
+  font-size: 1rem;
+  border-spacing: 10px 0;
+}
+
+.details {
+  border-spacing: 0 6px;
 }
 
 .details__header {
@@ -96,6 +98,7 @@ html {
   display: grid;
   grid-auto-flow: column;
   overscroll-behavior-x: contain;
+  padding-left: 0;
 }
 
 .list__item {

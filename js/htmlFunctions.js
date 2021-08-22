@@ -23,20 +23,22 @@ function orderToHtml(order) {
         <section class="order__info">
           <section class="order__header">
             <h3 class="order__date">Dato: <time>${dateString}</time></h3>
-            <h2 class="order__status">${orderStatus}</h2>
+            <h2 class="order__status ${
+              order.orderStatus === 'Closed' ? 'order__status--closed' : ''
+            }">${orderStatus}</h2>
           </section>
           <section class="items">
             <ul class="items__list">
               ${itemsHtml}
             </ul>
-            <section class="order__details">
-              <table>
+            <table class="items__details">
+              <tbody>
                 <tr>
                   <th scope="row" class="details__header">Totalt</th>
                   <td class="details__data">${priceTotalString}</td>
                 </tr>
-              </table>
-            </section>
+              </tbody>
+            </table>
           </section>
         </section>
         <details class="order__items">
@@ -74,25 +76,27 @@ function orderDetailsToHtml(order) {
   const itemsQuantity = getItemsQuantity(order.lineItems);
 
   return `
-    <table>
-      <tr>
-        <th scope="row" class="details__header">Ordrenummer</th>
-        <td class="details__data">
-          ${order.orderId}
-        </td>
-      </tr>
-      <tr>
-        <th scope="row" class="details__header">Betalingsstatus</th>
-        <td class="details__data">${paymentStatus}</td>
-      </tr>
-      <tr>
-        <th scope="row" class="details__header">Leveringsstatus</th>
-        <td class="details__data">${shipmentStatus}</td>
-      </tr>
-      <tr>
-        <th scope="row" class="details__header">Antall varer</th>
-        <td class="details__data">${itemsQuantity}</td>
-      </tr>
+    <table class="details">
+      <tbody>
+        <tr>
+          <th scope="row" class="details__header">Ordrenummer</th>
+          <td class="details__data">
+            ${order.orderId}
+          </td>
+        </tr>
+        <tr>
+          <th scope="row" class="details__header">Betalingsstatus</th>
+          <td class="details__data">${paymentStatus}</td>
+        </tr>
+        <tr>
+          <th scope="row" class="details__header">Leveringsstatus</th>
+          <td class="details__data">${shipmentStatus}</td>
+        </tr>
+        <tr>
+          <th scope="row" class="details__header">Antall varer</th>
+          <td class="details__data">${itemsQuantity}</td>
+        </tr>
+      </tbody>
     </table>
   `;
 }
