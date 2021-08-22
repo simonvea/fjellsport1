@@ -13,11 +13,11 @@ export function renderFetchError(element) {
   element.innerHTML = `
     <p>
       Klarte ikke hente ordre.
-      <button onClick="window.location.reload(false)">
+      <button class="button" onClick="window.location.reload(false)">
         Vennligst prøv igjen.
       </button>
     </p>
-  )`;
+  `;
 }
 
 export function renderOrders(element, orders) {
