@@ -1,3 +1,4 @@
+import { filterOrders } from './filter';
 import { ordersToHtml } from './htmlFunctions';
 
 export function renderLoading(element, message) {
@@ -26,7 +27,17 @@ export function renderOrders(element, orders) {
   element.innerHTML = html;
 }
 
-export function renderNotFound(element) {
+export function reRenderOrdersWithFilter(orders, filter) {
+  const filteredOrders = filterOrders(filter, orders);
+
+  if (filteredOrders.length < 1) {
+    renderNotFound(app);
+  } else {
+    renderOrders(app, filteredOrders);
+  }
+}
+
+function renderNotFound(element) {
   element.innerHTML = `
     <p>
       Beklager men vi kunne ikke finne noe som matchet ditt søk.
