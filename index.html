@@ -1,24 +1,115 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="no">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ordrehistorie - fjellsport</title>
+    <title>Ordrehistorie - fjellsport1.no</title>
   </head>
   <body>
-    <header></header>
-    <section>
-      <aside>Navn.. adresse.. osv</aside>
-      <article>
-        <h2>Bestillingsnummer:</h2>
-        <h3>Dato</h3>
-        <details>
-          <summary>dato - nr - items</summary>
-          <p>some stuff, more stuff</p>
-        </details>
-      </article>
-    </section>
+    <header class="header">
+      <h1 class="header__title">Fjellsport1.no</h1>
+    </header>
+    <main class="container">
+      <h1>Dine ordre</h1>
+      <form>
+        <section>
+          <label>
+            Søk:
+            <input
+              type="text"
+              class="filter"
+              placeholder="Søk i ordre"
+              list="history"
+            />
+          </label>
+          <datalist id="history">
+            <option value="jakke"></option>
+          </datalist>
+        </section>
+
+        <section class="orders">
+          <article class="order">
+            <section class="order__info">
+              <section class="order__header">
+                <h3 class="order__date">Dato: <time>20.1.2020</time></h3>
+                <h2 class="order__status">Under behandling</h2>
+              </section>
+              <section class="items">
+                <ul class="items__list">
+                  <li class="list__item">
+                    <article class="item">
+                      <img
+                        class="item__image"
+                        src="jakke.jpeg"
+                        alt="Bilde av jævlig kul jakke"
+                      />
+                      <section class="item__info">
+                        <h2 class="item__title">jævlig kul jakke</h2>
+                        <p class="item__quantity">1 x 899kr</p>
+                      </section>
+                    </article>
+                  </li>
+                  <li class="list__item">
+                    <article class="item">
+                      <img
+                        class="item__image"
+                        src=""
+                        alt="Bilde av jævlig kul jakke"
+                      />
+                      <h2 class="item__title">jævlig kul jakke</h2>
+                      <p class="item__quantity">1 x 899kr</p>
+                    </article>
+                  </li>
+                  <li class="list__item">
+                    <article class="item">
+                      <img
+                        class="item__image"
+                        src=""
+                        alt="Bilde av jævlig kul jakke"
+                      />
+                      <h2 class="item__title">jævlig kul jakke</h2>
+                      <p class="item__quantity">1 x 899kr</p>
+                    </article>
+                  </li>
+                </ul>
+                <section class="order__details">
+                  <table>
+                    <tr>
+                      <th scope="row" class="details__header">Totalt</th>
+                      <td class="details__data">899 kr</td>
+                    </tr>
+                  </table>
+                </section>
+              </section>
+            </section>
+            <details class="order__items">
+              <summary class="items__summary">Mer informasjon</summary>
+              <table>
+                <tr>
+                  <th scope="row" class="details__header">Totalt</th>
+                  <td class="details__data">4000 kr</td>
+                </tr>
+                <tr>
+                  <th scope="row" class="details__header">Betalingsstatus</th>
+                  <td class="details__data">Betalt</td>
+                </tr>
+                <tr>
+                  <th scope="row" class="details__header">Antall varer</th>
+                  <td class="details__data">2</td>
+                </tr>
+                <tr>
+                  <th scope="row" class="details__header">Ordrenummer</th>
+                  <td class="details__data">
+                    9282e369-456d-4c39-b2b9-41a706f3ad62
+                  </td>
+                </tr>
+              </table>
+            </details>
+          </article>
+        </section>
+      </form>
+    </main>
     <footer></footer>
     <script type="module" src="/main.js"></script>
   </body>
