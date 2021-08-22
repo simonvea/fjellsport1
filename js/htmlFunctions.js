@@ -80,7 +80,7 @@ function orderDetailsToHtml(order) {
       <tbody>
         <tr>
           <th scope="row" class="details__header">Ordrenummer</th>
-          <td class="details__data">
+          <td class="details__data details__data--small">
             ${order.orderId}
           </td>
         </tr>
